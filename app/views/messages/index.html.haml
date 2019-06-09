@@ -1,0 +1,33 @@
+.top-log
+  グループを作成しました
+
+.left-contents
+  .left-contents__header
+    .left-contents__header__user
+      test-user 1
+    .left-contents__header__icon-display
+      =link_to "", class: "left-contents__header__icon-display__new-group-icon" do
+        = fa_icon "pencil-square-o"
+        %span<>
+      =link_to "", class: "left-contents__header__icon-display__edit-account-icon" do
+        = fa_icon "gear"
+        %span<>
+  .left-contents__main
+    = render partial: "left-group-display"
+
+.right-contents
+  .right-contents__header
+    .right-contents__header__display
+      .right-contents__header__display__group
+        あいうえお
+      .right-contents__header__display__user
+        あいうえお
+    =link_to "Edit", "", class: "right-contents__header__edit-button"
+  .right-contents__main
+    .right-contents__main__chat-display
+      .right-contents__main__chat-display__user
+        か
+      .right-contents__main__chat-display__post-date
+        き
+      .right-contents__main__chat-display__article
+        く

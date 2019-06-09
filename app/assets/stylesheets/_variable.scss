@@ -1,0 +1,15 @@
+@mixin left-header-icon {
+  color: $font-white;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+@mixin left-contents-font($size: 16px, $weight: bold) {
+  font-size: $size;
+  font-weight: $weight;
+}
+
+$font-white: #ffffff;
+$left-contents-padding: 0 20px;
+$right-contents-padding: 0 40px;
+$header-height: 96px;

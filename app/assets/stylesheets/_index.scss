@@ -1,0 +1,74 @@
+.top-log{
+  width: 100vw;
+  background-color: #38AEF0;
+  color: $font-white;
+  text-align: center;
+}
+
+.left-contents{
+  height: 100vh;
+  width: 300px;
+  color: $font-white;
+  float: left;
+  &__header{
+    height: $header-height;
+    background-color: #253141;
+    padding: $left-contents-padding;
+    display: flex;
+    line-height: 96px;
+    &__user{
+      @include left-contents-font;
+    }
+    &__icon-display{
+      margin-left: auto;
+      &__new-group-icon{
+      @include left-header-icon;
+      } 
+      &__edit-account-icon{
+      @include left-header-icon;
+      }
+    }
+  }
+  &__main{
+    height: calc(100vh - 96px);
+    background-color: #2f3e51;
+    padding: $left-contents-padding;
+    &__display{
+      padding: 20px 0;
+      &__group{
+        @include left-contents-font(15px, bold);
+      }
+      &__chat{
+        @include left-contents-font(11px, bold);
+        padding-top: 5px;
+      }
+    }
+  }
+}
+
+.right-contents{
+  height: 100vh;
+  width: calc(100vw - 300px);
+  float: right;
+  &__header{
+    height: $header-height;
+    padding: $right-contents-padding;
+    display: flex;
+    border-bottom: 1px solid #eeeeee;
+    box-sizing: border-box;
+    &__display{
+      margin-top: 35px;
+    }
+    &__edit-button{
+      height: 40px;
+      color: #38AEF0;
+      margin-top: 28px;
+      margin-left: auto;
+      padding: 0 20px;
+      line-height: 40px;
+      border: 1px solid #38AEF0;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+  }
+}
