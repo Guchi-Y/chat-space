@@ -1,74 +1,152 @@
-.top-log{
-  width: 100vw;
-  background-color: #38AEF0;
+::-webkit-scrollbar {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.top-log {
+  width: $weight-max-vw;
+  background-color: $bright-blue;
   color: $font-white;
   text-align: center;
 }
 
-.left-contents{
-  height: 100vh;
-  width: 300px;
+.left-contents {
+  height: $height-max-vh;
+  width: $left-contents-weight;
   color: $font-white;
   float: left;
-  &__header{
+  &__header {
     height: $header-height;
     background-color: #253141;
-    padding: $left-contents-padding;
+    padding: 0 $left-contents-side-padding;
     display: flex;
-    line-height: 96px;
-    &__user{
-      @include left-contents-font;
+    line-height: $header-height;
+    &__user {
+      @include left-contents-font-style(16px, bold);
     }
-    &__icon-display{
+    &__icon-display {
       margin-left: auto;
-      &__new-group-icon{
+      &__new-group-icon {
       @include left-header-icon;
       } 
-      &__edit-account-icon{
+      &__edit-account-icon {
       @include left-header-icon;
       }
     }
   }
-  &__main{
-    height: calc(100vh - 96px);
+  &__main {
+    height: calc(#{$height-max-vh} - #{$header-height});
     background-color: #2f3e51;
-    padding: $left-contents-padding;
+    padding: 0 $left-contents-side-padding;
     &__display{
       padding: 20px 0;
       &__group{
-        @include left-contents-font(15px, bold);
+        @include left-contents-font-style(15px, bold);
       }
       &__chat{
-        @include left-contents-font(11px, bold);
+        @include left-contents-font-style(11px, bold);
         padding-top: 5px;
       }
     }
   }
 }
 
-.right-contents{
-  height: 100vh;
-  width: calc(100vw - 300px);
+.right-contents {
+  height: $height-max-vh;
+  width: calc(#{$weight-max-vw} - #{$left-contents-weight});
   float: right;
-  &__header{
+  position: relative;
+  &__header {
     height: $header-height;
-    padding: $right-contents-padding;
+    padding: 0 $right-contents-side-padding;
     display: flex;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid $bright-gray;
     box-sizing: border-box;
-    &__display{
+    white-space: nowrap;
+    overflow: scroll;
+    &__display {
       margin-top: 35px;
+      &__group {
+        font-size: 20px;
+        color: #333333;
+        margin-bottom: 15px;
+      }
+      &__member {
+        font-size: 12px;
+        color: #999999;
+        display: flex;
+        &__name {
+          margin-left: 5px;
+        }
+      }
     }
-    &__edit-button{
-      height: 40px;
-      color: #38AEF0;
-      margin-top: 28px;
-      margin-left: auto;
+    &__edit-button {
+      height: $edit-button-height;
+      color: $bright-blue;
       padding: 0 20px;
-      line-height: 40px;
-      border: 1px solid #38AEF0;
+      line-height: $edit-button-height;
+      position: absolute;
+      top: 28px;
+      right: 40px;
+      border: 1px solid $bright-blue;
       text-decoration: none;
       box-sizing: border-box;
+    }
+  }
+  &__main {
+    height: calc(#{$height-max-vh} - #{$header-height} - #{$form-height});
+    background-color: #fafafa;
+    padding: 46px $right-contents-side-padding;
+    overflow: scroll;
+    box-sizing: border-box;
+    &__chat-display {
+      margin-bottom: 40px;
+      &__user {
+        @include chat-display-font-style(16px, $chat-font-color, bold, 0);
+      }
+      &__post-date {
+        @include chat-display-font-style(12px, #999999, normal, 0 0 0 10px);
+      }
+      &__article {
+        @include chat-display-font-style(14px, $chat-font-color, normal, 10px 0 0 0);
+      }
+    }
+  }
+  &__form {
+    height: $form-height;
+    width: calc(#{$weight-max-vw} - #{$left-contents-weight});
+    background-color: $bright-gray;
+    padding: (($form-height - $form-display-height) / 2) $right-contents-side-padding;
+    box-sizing: border-box;
+    &__display {
+      
+      display: flex;
+      &__message-box {
+        position: relative;
+        width: 100%;
+        &__text {
+          height: $form-display-height;
+          width: 100%;
+          padding: 0 40px 0 10px;
+          box-sizing: border-box;
+        }
+        &__photo-icon {
+          font-size: 20px;
+          color: #000000;
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+      }
+      &__send-button {
+        height: $form-display-height;
+        width: 100px;
+        color: $font-white;
+        background-color: $bright-blue;
+        padding: 0 30px;
+        margin-left: 15px;
+        cursor: pointer;
+      }
     }
   }
 }

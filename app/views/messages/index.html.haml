@@ -19,15 +19,18 @@
   .right-contents__header
     .right-contents__header__display
       .right-contents__header__display__group
-        あいうえお
-      .right-contents__header__display__user
-        あいうえお
+        group
+      .right-contents__header__display__member
+        Member : 
+        = render partial: "member-name"
     =link_to "Edit", "", class: "right-contents__header__edit-button"
   .right-contents__main
-    .right-contents__main__chat-display
-      .right-contents__main__chat-display__user
-        か
-      .right-contents__main__chat-display__post-date
-        き
-      .right-contents__main__chat-display__article
-        く
+    = render partial: "chat-display"
+  .right-contents__form
+    %form{:action => "/", :method => "post", class: "right-contents__form__display"}
+      .right-contents__form__display__message-box
+        %input{:name => "", class: "right-contents__form__display__message-box__text", placeholder: "type a message"}
+          =link_to "", class: "right-contents__form__display__message-box__photo-icon" do
+            = fa_icon "photo"
+            %span<>
+      %input{:type => "submit", :value => "Send", class: "right-contents__form__display__send-button"}
