@@ -1,7 +1,7 @@
 @mixin left-header-icon {
   color: $font-white;
-  text-decoration: none;
   margin-left: 5px;
+  text-decoration: none;
 }
 
 @mixin left-contents-font-style($size, $weight) {

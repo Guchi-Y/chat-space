@@ -6,10 +6,10 @@
     .left-contents__header__user
       test-user 1
     .left-contents__header__icon-display
-      =link_to "", class: "left-contents__header__icon-display__new-group-icon" do
+      = link_to "", class: "left-contents__header__icon-display__new-group-icon" do
         = fa_icon "pencil-square-o"
         %span<>
-      =link_to "", class: "left-contents__header__icon-display__edit-account-icon" do
+      = link_to "", class: "left-contents__header__icon-display__edit-account-icon" do
         = fa_icon "gear"
         %span<>
   .left-contents__main
@@ -23,7 +23,7 @@
       .right-contents__header__display__member
         Member : 
         = render partial: "member-name"
-    =link_to "Edit", "", class: "right-contents__header__edit-button"
+    = link_to "Edit", "", class: "right-contents__header__edit-button"
   .right-contents__main
     = render partial: "chat-display"
   .right-contents__form
