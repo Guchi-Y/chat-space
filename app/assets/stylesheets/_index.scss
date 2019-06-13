@@ -42,12 +42,12 @@ label input {
     height: calc(#{$height-max-vh} - #{$header-height});
     background-color: #2f3e51;
     padding: 0 $left-contents-side-padding;
-    &__display{
+    &__display {
       padding: 20px 0;
-      &__group{
+      &__group {
         @include left-contents-font-style(15px, bold);
       }
-      &__chat{
+      &__chat {
         @include left-contents-font-style(11px, bold);
         padding-top: 5px;
       }
