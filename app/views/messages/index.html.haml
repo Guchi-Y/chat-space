@@ -1,12 +1,15 @@
+.top-log
+  グループを作成しました
+
 .left-contents
   .left-contents__header
     .left-contents__header__user
-      = current_user.name
+      test-user 1
     .left-contents__header__icon-display
       = link_to "", class: "left-contents__header__icon-display__new-group-icon" do
         = fa_icon "pencil-square-o"
         %span<>
-      =link_to edit_user_path(current_user), class: "left-contents__header__icon-display__edit-account-icon" do
+      =link_to "", class: "left-contents__header__icon-display__edit-account-icon" do
         = fa_icon "gear"
         %span<>
   .left-contents__main
