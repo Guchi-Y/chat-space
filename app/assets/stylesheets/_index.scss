@@ -145,7 +145,7 @@ label input {
           color: #000000;
           position: absolute;
           top: 10px;
-          right: 10px;
+          right: 125px;
           cursor: pointer;
         }
       }
@@ -160,4 +160,12 @@ label input {
       }
     }
   }
+}
+
+.new_message {
+  display: flex;
+}
+
+.field_with_errors {
+  width: 100%;
 }
