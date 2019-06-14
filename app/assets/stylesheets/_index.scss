@@ -46,10 +46,13 @@ label input {
       padding: 20px 0;
       &__group {
         @include left-contents-font-style(15px, bold);
+        color: $font-white;
       }
       &__chat {
         @include left-contents-font-style(11px, bold);
         padding-top: 5px;
+        color: $font-white;
+        margin-bottom: 40px;
       }
     }
   }
