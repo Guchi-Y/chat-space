@@ -10,4 +10,10 @@
         = fa_icon "gear"
         %span<>
   .left-contents__main
-    = render partial: "left-group-display"
+    .left-contents__main__display
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .left-contents__main__display__group
+            = group.name
+          .left-contents__main__display__chat
+            = group.show_last_message

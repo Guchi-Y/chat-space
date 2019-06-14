@@ -48,6 +48,7 @@ label input {
     padding: 0 $left-contents-side-padding;
     &__display {
       padding: 20px 0;
+      overflow: hidden;
       &__group {
         @include left-contents-font-style(15px, bold);
         color: $font-white;
