@@ -24,8 +24,10 @@
       .right-contents__header__display__group
         = @group.name
       .right-contents__header__display__member
-        Member : 
-        = render partial: "member-name"
+        Member :
+        .right-contents__header__display__member__name
+          - @users.each do |user|
+            = user.name
     = link_to "Edit", "/groups/#{@group.id}/edit", class: "right-contents__header__edit-button"
   .right-contents__main
     = render @messages
