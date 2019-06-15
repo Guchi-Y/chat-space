@@ -6,28 +6,38 @@
       = link_to new_group_path, class: "left-contents__header__icon-display__new-group-icon" do
         = fa_icon "pencil-square-o"
         %span<>
-      =link_to edit_user_path(current_user), class: "left-contents__header__icon-display__edit-account-icon" do
+      = link_to edit_user_path(current_user), class: "left-contents__header__icon-display__edit-account-icon" do
         = fa_icon "gear"
         %span<>
   .left-contents__main
-    = render partial: "left-group-display"
+    .left-contents__main__display
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .left-contents__main__display__group
+            = group.name
+          .left-contents__main__display__chat
+            = group.show_last_message
 
 .right-contents
   .right-contents__header
     .right-contents__header__display
       .right-contents__header__display__group
-        group
+        = @group.name
       .right-contents__header__display__member
-        Member : 
-        = render partial: "member-name"
-    = link_to "Edit", "", class: "right-contents__header__edit-button"
+        Member :
+        .right-contents__header__display__member__name
+          - @users.each do |user|
+            = user.name
+    = link_to "Edit", "/groups/#{@group.id}/edit", class: "right-contents__header__edit-button"
   .right-contents__main
-    = render partial: "chat-display"
+    = render @messages
   .right-contents__form
-    %form{:action => "/", :method => "post", class: "right-contents__form__display"}
+    .right-contents__form__display
       .right-contents__form__display__message-box
-        %input{:name => "", class: "right-contents__form__display__message-box__text", placeholder: "type a message"}
-          %label.right-contents__form__display__message-box__photo-icon{for: "upload-icon"}
-            %i.fa.fa-picture-o
-            %input{:type => "file", id: "upload-icon"}
-      %input{:type => "submit", :value => "Send", class: "right-contents__form__display__send-button"}
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: "right-contents__form__display__message-box__text", placeholder: 'type a message'
+          .form
+            = f.label :image, class: 'right-contents__form__display__message-box__photo-icon' do
+              = fa_icon 'picture-o'
+              = f.file_field :image, id: "upload-icon"
+          = f.submit 'Send', class: "right-contents__form__display__send-button"

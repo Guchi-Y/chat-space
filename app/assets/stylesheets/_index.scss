@@ -48,6 +48,7 @@ label input {
     padding: 0 $left-contents-side-padding;
     &__display {
       padding: 20px 0;
+      overflow: hidden;
       &__group {
         @include left-contents-font-style(15px, bold);
         color: $font-white;
@@ -145,7 +146,7 @@ label input {
           color: #000000;
           position: absolute;
           top: 10px;
-          right: 10px;
+          right: 125px;
           cursor: pointer;
         }
       }
@@ -160,4 +161,12 @@ label input {
       }
     }
   }
+}
+
+.new_message {
+  display: flex;
+}
+
+.field_with_errors {
+  width: 100%;
 }
