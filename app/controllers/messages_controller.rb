@@ -4,12 +4,12 @@ class MessagesController < ApplicationController
   def index
     @message  = Message.new
     @messages = @group.messages.includes(:user)
-    @users    = @group.users.includes(:group_users)
+    get_group_members
   end
 
   def create
     @message = @group.messages.new(message_params)
-    @users   = @group.users.includes(:group_users)
+    get_group_members
     if @message.save
       redirect_to group_messages_path(@group), notice: 'メッセージが送信されました'
     else
@@ -27,5 +27,9 @@ class MessagesController < ApplicationController
 
   def set_group
     @group = Group.find(params[:group_id])
+  end
+
+  def get_group_members
+    @users = @group.users.includes(:group_users)
   end
 end
