@@ -7,6 +7,7 @@
 @mixin left-contents-font-style($size, $weight) {
   font-size: $size;
   font-weight: $weight;
+  color: $font-white;
 }
 
 @mixin chat-display-font-style($size, $color, $weight, $margin) {
