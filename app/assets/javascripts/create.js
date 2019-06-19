@@ -27,8 +27,7 @@ $(function(){
     .done(function(message){
       var html = buildHTML(message);
       $('.right-contents__main').append(html);
-      $('#message_content').val('');
-      $('#message_image').val('');
+      $('#new_message')[0].reset();
       $('.right-contents__main').animate({scrollTop: $('.right-contents__main')[0].scrollHeight});
       $('.right-contents__form__display__send-button').prop("disabled", false);
       })
