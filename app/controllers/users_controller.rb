@@ -10,6 +10,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def index
+    if params[:userName].length == 0
+      @users = User.where('name LIKE(?)', "")
+    else 
+      @users = User.where('name LIKE(?)', "#{params[:userName]}%")
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
 
   def user_params
