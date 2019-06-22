@@ -11,11 +11,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:userName].length == 0
-      @users = User.where('name LIKE(?)', "")
-    else 
-      @users = User.where('name LIKE(?)', "#{params[:userName]}%")
-    end
+    @users = User.where('name LIKE(?) AND id != ?', blank_confirmation, current_user.id)
+
     respond_to do |format|
       format.html
       format.json
@@ -26,5 +23,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def blank_confirmation
+    params[:userName].length == 0 ? "" : "#{params[:userName]}%"
   end
 end

@@ -48,7 +48,6 @@ $(function() {
         }
         
         users.forEach(function(user) {
-          if (current_user_id == user.id) { return; }
           appendUserName(user.name, user.id);
         });
       })
