@@ -3,6 +3,7 @@ $(function() {
   var search_list     = $("#user-search-result");
   var current_user_id = $(".current_user_id").val();
   var chat_group_user = $("#chat-group-users");
+  var preInput;
 
   function appendUserName(userName, userId) {
     var html = `<div class="chat-group-user clearfix">
@@ -30,30 +31,33 @@ $(function() {
 
   $("#user-search-field").on('keyup', function() {
     var input = $("#user-search-field").val();
+    if (input != preInput){
 
-    $.ajax({
-      type: 'GET',
-      url: '/users',
-      data: { userName: input },
-      dataType: 'json'
-    })
-
-    .done(function(users) {
-      $("#user-search-result").empty();
+      $.ajax({
+        type: 'GET',
+        url: '/users',
+        data: { userName: input },
+        dataType: 'json'
+      })
       
-      if (users.length == 0) {
-        appendErrMsgToHTML("一致するユーザーが見つかりません");
-      }
+      .done(function(users) {
+        $("#user-search-result").empty();
+        
+        if (users.length == 0) {
+          appendErrMsgToHTML("一致するユーザーが見つかりません");
+        }
+        
+        users.forEach(function(user) {
+          if (current_user_id == user.id) { return; }
+          appendUserName(user.name, user.id);
+        });
+      })
       
-      users.forEach(function(user) {
-        if (current_user_id == user.id) { return; }
-        appendUserName(user.name, user.id);
-      });
-    })
-    
-    .fail(function() {
-      alert('ユーザー検索に失敗しました');
-    })
+      .fail(function() {
+        alert('ユーザー検索に失敗しました');
+      })
+    }
+    preInput = input
   });
 
   $(document).on("click", ".user-search-add.chat-group-user__btn.chat-group-user__btn--add", function() {
