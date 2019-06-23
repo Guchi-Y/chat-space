@@ -1,13 +1,13 @@
 $(function(){
   function buildHTML(message){
-    var html = `<div class="right-contents__main__chat-display">
+    var html = `<div class="right-contents__main__chat-display" data-message-id="${message.id}">
                   <span class="right-contents__main__chat-display__user">${message.user_name}</span>
                   <span class="right-contents__main__chat-display__post-date">${message.date}</span>
                   <div class="right-contents__main__chat-display__article">
                     <p class="lower-message__content">
                       ${message.content}
                     </p>
-                    ${message.image.url === null ? `` : `<img class="lower-message__image" src="${message.image.url}" alt="${message.image}">`}
+                    ${message.image.url == null ? `` : `<img class="lower-message__image" src="${message.image.url}" alt="${message.image}">`}
                   </div>
                 </div>`
     return html;
@@ -36,4 +36,25 @@ $(function(){
       $('.right-contents__form__display__send-button').prop("disabled", false);
     })
   })
+
+  var reloadMessages = function() {
+    last_message_id = $(".right-contents__main > div:last").attr("data-message-id");
+    $.ajax({
+      url: 'api/messages',
+      type: 'GET',
+      dataType: 'json',
+      data: { id: last_message_id }
+    })
+    .done(function(messages) {
+      messages.forEach(function(message) {
+        var html = buildHTML(message);
+        $('.right-contents__main').append(html);
+        $('.right-contents__main').animate({scrollTop: $('.right-contents__main')[0].scrollHeight});
+      });
+    })
+    .fail(function() {
+      console.log('error')
+    });
+  };
+  setInterval(reloadMessages, 5000);
 });
