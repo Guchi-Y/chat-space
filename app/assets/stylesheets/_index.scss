@@ -45,9 +45,9 @@ label input {
     height: calc(#{$height-max-vh} - #{$header-height});
     background-color: #2f3e51;
     padding: 0 $left-contents-side-padding;
+    overflow: scroll;
     &__display {
       padding: 20px 0;
-      overflow: hidden;
       &__group {
         @include left-contents-font-style(15px, bold);
       }

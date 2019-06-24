@@ -1,7 +1,6 @@
 $(function() {
 
   var search_list     = $("#user-search-result");
-  var current_user_id = $(".current_user_id").val();
   var chat_group_user = $("#chat-group-users");
   var preInput;
 
