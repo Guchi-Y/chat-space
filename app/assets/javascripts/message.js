@@ -54,7 +54,7 @@ $(function(){
       });
     })
     .fail(function() {
-      console.log(url)
+      console.log('error')
     });
   };
   
