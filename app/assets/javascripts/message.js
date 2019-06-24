@@ -38,6 +38,7 @@ $(function(){
   })
 
   var reloadMessages = function() {
+    
     last_message_id = $(".right-contents__main > div:last").attr("data-message-id");
     $.ajax({
       url: 'api/messages',
@@ -53,8 +54,11 @@ $(function(){
       });
     })
     .fail(function() {
-      console.log('error')
+      console.log(url)
     });
   };
-  setInterval(reloadMessages, 5000);
+  
+  if ($(location).attr('pathname').indexOf('/messages') !== -1) {
+    setInterval(reloadMessages, 5000);
+  }
 });
