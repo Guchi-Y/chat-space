@@ -30,10 +30,10 @@ $(function() {
   }
 
   $("#user-search-field").on('keyup', function() {
-    var group_member = []
-    $(".hidden_input").map(function () {
-      group_member.push($(this).val());
-    });
+  
+    var group_member = $(".hidden_input").map(function () {
+      return $(this).val();
+    }).get();
 
     var input = $("#user-search-field").val();
     if (input != preInput){
