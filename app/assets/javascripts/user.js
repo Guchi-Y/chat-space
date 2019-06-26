@@ -4,6 +4,7 @@ $(function() {
   var chat_group_user = $("#chat-group-users");
   var preInput;
 
+
   function appendUserName(userName, userId) {
     var html = `<div class="chat-group-user clearfix">
                   <p class="chat-group-user__name">${ userName }</p>
@@ -21,7 +22,7 @@ $(function() {
 
   function appendChatMember(groupMemberName, groupMemberId) {
     var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-user-8'>
-                  <input name='group[user_ids][]' type='hidden' value='${ groupMemberId }'>
+                  <input class='hidden_input' name='group[user_ids][]' type='hidden' value='${ groupMemberId }'>
                   <p class='chat-group-user__name'>${ groupMemberName }</p>
                   <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
                 </div>`
@@ -29,13 +30,18 @@ $(function() {
   }
 
   $("#user-search-field").on('keyup', function() {
+    var group_member = []
+    $(".hidden_input").map(function () {
+      group_member.push($(this).val());
+    });
+
     var input = $("#user-search-field").val();
     if (input != preInput){
 
       $.ajax({
         type: 'GET',
         url: '/users',
-        data: { userName: input },
+        data: { userName: input, group_member: group_member },
         dataType: 'json'
       })
       
